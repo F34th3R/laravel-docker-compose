@@ -27,7 +27,7 @@ Three additional containers are included that handle Composer, NPM, and Artisan 
 into src/
 
 ```bash
-composer create-project larave/laravel .
+docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 ```
 
 ### Migrate
