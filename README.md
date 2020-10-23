@@ -1,6 +1,6 @@
 # docker-compose-laravel
-A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
 
+A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
 
 ## Usage
 
@@ -16,11 +16,30 @@ Bringing up the Docker Compose network with `site` instead of just using `up`, e
 - **mysql** - `:3306`
 - **php** - `:9000`
 
-Three additional containers are included that handle Composer, NPM, and Artisan commands *without* having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
+Three additional containers are included that handle Composer, NPM, and Artisan commands _without_ having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
 
 - `docker-compose run --rm composer update`
 - `docker-compose run --rm npm run dev`
-- `docker-compose run --rm artisan migrate` 
+- `docker-compose run --rm artisan migrate`
+
+## Install Laravel
+
+into src/
+
+```bash
+composer create-project larave/laravel .
+```
+
+### Migrate
+
+into src/.env
+
+```.env
+DB_HOST=mysql
+DB_DATABASE=feather_db
+DB_USERNAME=feather
+DB_PASSWORD=secret
+```
 
 ## Persistent MySQL Storage
 
@@ -33,3 +52,4 @@ By default, whenever you bring down the Docker network, your MySQL data will be 
 volumes:
   - ./mysql:/var/lib/mysql
 ```
+
